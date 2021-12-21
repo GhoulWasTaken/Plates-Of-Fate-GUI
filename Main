@@ -1,0 +1,119 @@
+local Workspace = game:GetService("Workspace")
+local Lighting = game:GetService("Lighting")
+local Players = game:GetService("Players")
+local Camera = Workspace.Camera
+local LocalPlayer = Players.LocalPlayer
+local Character = LocalPlayer.Character
+local Humanoid = Character.Humanoid
+local HumanoidRootPart = Character.HumanoidRootPart
+local UIS = game:GetService("UserInputService")
+local mouse = LocalPlayer:GetMouse()
+local LocalPlayerName = LocalPlayer.Name
+local PlateStorage = Workspace.PlateStorage
+local LocalPlate = PlateStorage[LocalPlayerName].Plate
+local PlateDebris = LocalPlate.Parent.PlateDebris
+local GameDebris = Workspace.GameDebris
+
+-- NO SPEED CHANGE (buggy) / FOV CHANGE / NO PLATE CHANGES  / NO LIGHTING CHANGES / ANTI MARBLE
+
+print(LocalPlate)
+
+while wait(0.1) do
+    
+    local children_count = #PlateStorage:GetChildren()
+    
+    if children_count == "1" then
+       if PlateStorage:FindFirstChild("Nobody") then
+           LocalPlate = PlateStorage:FindFirstChild("Nobody").Plate
+                
+           else
+                LocalPlate = PlateStorage[LocalPlayerName].Plate
+       end
+    end
+    
+    for i,v in pairs(GameDebris:GetChildren()) do
+        if v.Name == "Laser" then
+            v:Destroy()
+        end
+    end
+    
+    if Camera.FieldOfView ~= 70 then
+        Camera.FieldOfView = 70
+    end
+    
+    if Humanoid.WalkSpeed < 16 then
+        Humanoid.WalkSpeed = 16
+    end
+    
+    if LocalPlate.Transparency ~= 0 then
+        print("hi")
+        LocalPlate.Transparency = 0
+    end
+    
+    if Lighting.ClockTime ~= 14 then
+        Lighting.ClockTime = 14
+    end
+    
+    if PlateDebris:FindFirstChild("Invisible Cage") then
+        PlateDebris["Invisible Cage"].Transparency = 0
+    end
+    
+    if PlateDebris:FindFirstChild("Lava Spinner") then
+        PlateDebris["Lava Spinner"]:Destroy()
+    end
+    
+    if Lighting:FindFirstChild("Black and White") then
+        Lighting["Black and White"]:Destroy()
+    end
+    
+    if Lighting:FindFirstChild("Blind") then
+        Lighting.Blind:Destroy()
+    end
+    
+    if Lighting:FindFirstChild("Blur") then
+        Lighting.Blur:Destroy()
+    end
+    
+    if HumanoidRootPart:FindFirstChild("Marble") then
+        HumanoidRootPart.Marble:Destroy()
+    end
+    
+    if Workspace.Gravity > 196 then
+        Workspace.Gravity = 196
+    end
+    
+    if LocalPlate:FindFirstChild("Mine") then
+        LocalPlate.Mine:Destroy()
+    end
+    
+        Lighting.FogEnd = 99999
+    
+    if Lighting:FindFirstChild("DepthOfField") then
+        Lighting.DepthOfField:Destroy()
+    end
+    
+    if Lighting:FindFirstChild("ColorCorrection") then
+        Lighting.ColorCorrection:Destroy()
+    end
+    
+    if GameDebris:FindFirstChild("BlizzardParticles") then
+        GameDebris:FindFirstChild("BlizzardParticles"):Destroy()
+    end
+    
+    if LocalPlate:FindFirstChild("Spike Wall") then
+        LocalPlate:FindFirstChild("Spike Wall"):Destroy()
+    end
+    
+    --if PlateDebris:FindFirstChild("PlateHole") then  (CURRENTLY DOESN'T WORK)
+        --PlateDebris.PlateHole:Destroy()
+    --end
+    
+    --for i,v in pairs(PlateDebris:GetChildren()) do
+        --if v.Name == "Bear Trap" or "PlateHole" or "Fog" then
+            --v:Destroy()
+           -- print("Deleted"..v.Name)
+        --end
+    --end
+    
+end
+
