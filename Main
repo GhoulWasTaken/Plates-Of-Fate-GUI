@@ -62,6 +62,10 @@ while wait(0.1) do
         PlateDebris["Lava Spinner"]:Destroy()
     end
     
+    if GameDebris:FindFirstChild("Lava Spinner") then
+        GameDebris["Lava Spinner"]:Destroy()
+    end
+    
     if Lighting:FindFirstChild("Black and White") then
         Lighting["Black and White"]:Destroy()
     end
